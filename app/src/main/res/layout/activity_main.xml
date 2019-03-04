@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:gravity="top|center"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:textSize="28sp"
+        android:layout_height="wrap_content"
+        android:text="Sports Streams"/>
+
+
+    <Button
+        android:layout_weight="2"
+        android:id="@+id/soccer_button"
+        android:onClick="openSport"
+        android:text="@string/soccer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:layout_weight="2"
+        android:id="@+id/nba_button"
+        android:onClick="openSport"
+        android:text="@string/nba"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:layout_weight="2"
+        android:id="@+id/nfl_button"
+        android:onClick="openSport"
+        android:text="@string/nfl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:layout_weight="2"
+        android:id="@+id/cricket_button"
+        android:onClick="openSport"
+        android:text="@string/cricket"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:layout_weight="2"
+        android:id="@+id/rugby_button"
+        android:onClick="openSport"
+        android:text="@string/rugby"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:layout_weight="2"
+        android:id="@+id/mma_button"
+        android:onClick="openSport"
+        android:text="@string/mma"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:layout_weight="2"
+        android:id="@+id/nhl_button"
+        android:onClick="openSport"
+        android:text="@string/nhl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:layout_weight="2"
+        android:id="@+id/ncaabb_button"
+        android:onClick="openSport"
+        android:text="@string/ncaabb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

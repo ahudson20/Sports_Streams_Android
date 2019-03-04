@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Streamz</string>
+    <string name="soccer">Soccer</string>
+    <string name="nba">NBA</string>
+    <string name="nfl">NFL</string>
+    <string name="cricket">Cricket</string>
+    <string name="rugby">Rugby</string>
+    <string name="mma">MMA</string>
+    <string name="nhl">NHL</string>
+    <string name="ncaabb">NCAA BB</string>
+
+    <!--<string-array name="planets_array">-->
+        <!--<item>Mercury</item>-->
+        <!--<item>Venus</item>-->
+        <!--<item>Earth</item>-->
+        <!--<item>Mars</item>-->
+        <!--<item>Jupiter</item>-->
+        <!--<item>Saturn</item>-->
+        <!--<item>Uranus</item>-->
+        <!--<item>Neptune</item>-->
+    <!--</string-array>-->
+
+</resources>
