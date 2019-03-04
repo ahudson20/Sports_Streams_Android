@@ -35,11 +35,12 @@ public class Links {
                 if((text.matches(".*\\d+.*") || text.contains("Game Thread")) && !text.contains("PS4") && !text.contains("NHL TV") && !text.contains("PLEASE")){
                     String httpHref = m.parent().attr("abs:href");
 
-                    if(httpHref.length() > 0 && text.substring(0, 12).equalsIgnoreCase("Game Thread:")){
-                        finalLinks.put(text.substring(13), diveLink(httpHref));
-                    }else if(httpHref.length() > 0 && text.substring(0,15).equalsIgnoreCase("archive thread:")){
-                        finalLinks.put(text.substring(16), diveLink(httpHref));
-                    }else if(httpHref.length() > 0){
+                    text = text.replaceAll("(\\[)([A-Za-z0-9:\\s])*(])", "").trim();
+                    text = text.replaceAll("(?i)game thread:", "").trim();
+                    text = text.replaceAll("(?i)archive thread:", "").trim();
+                    text = text.replaceAll("(?i)event thread thread:", "").trim();
+
+                    if(httpHref.length() > 0){
                         finalLinks.put(text, diveLink(httpHref));
                     }
                 }
