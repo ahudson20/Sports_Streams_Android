@@ -1,6 +1,5 @@
 package com.example.anaruhudson.streamz;
 
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
@@ -36,18 +35,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
         @Override
         public void onClick(View view) {
-//            Toast.makeText(view.getContext(), "position = " + getAdapterPosition(), Toast.LENGTH_SHORT).show();
-//            view.setBackgroundColor(Color.BLUE);
-//            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com"));
-//            startActivity(browserIntent);
-
-//            if (selectedPos == getAdapterPosition()) {
-//                selectedPos = RecyclerView.NO_POSITION;
-//                notifyDataSetChanged();
-//                return;
-//            }
-//            selectedPos = getAdapterPosition();
-//            notifyDataSetChanged();
             String s = mTextView.getText().toString();
             Toast.makeText(view.getContext(), "position = " + getAdapterPosition() + " " + s, Toast.LENGTH_SHORT).show();
 

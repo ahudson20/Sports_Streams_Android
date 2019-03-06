@@ -11,33 +11,34 @@
     >
 
     <TextView
-        android:layout_weight="1"
-        android:layout_width="wrap_content"
         android:id="@+id/link_title"
-        android:textSize="28sp"
+        android:layout_width="109dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="5sp"
+        android:layout_marginTop="7sp"
+        android:layout_weight="1"
+        android:gravity="center"
         android:text="Rugby"
-        android:layout_margin="5sp"/>
+        android:textSize="28sp" />
         <!--android:layout_gravity="left"-->
         <!--android:paddingLeft="10sp"-->
         <!--android:paddingRight="10sp"/>-->
 
 
     <Spinner
+        android:id="@+id/combo_spinner"
         android:layout_width="match_parent"
         android:layout_height="35sp"
-        android:id="@+id/combo_spinner"
-        android:layout_margin="5sp"
-        android:background="@drawable/spinner_border"/>
+        android:layout_marginBottom="5sp"
+        android:background="@drawable/spinner_border" />
 
     <android.support.v7.widget.RecyclerView
-        android:layout_weight="20"
         android:id="@+id/list_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scrollbars="vertical"
+        android:layout_width="384dp"
+        android:layout_height="436dp"
         android:layout_margin="5sp"
-        />
+        android:layout_weight="20"
+        android:scrollbars="vertical" />
 
 
 </LinearLayout>
