@@ -38,9 +38,9 @@
         android:layout_height="wrap_content" />
     <Button
         android:layout_weight="2"
-        android:id="@+id/cricket_button"
+        android:id="@+id/mlb_button"
         android:onClick="openSport"
-        android:text="@string/cricket"
+        android:text="@string/mlb"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <Button

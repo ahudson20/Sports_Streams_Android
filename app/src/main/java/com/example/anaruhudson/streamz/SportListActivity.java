@@ -28,18 +28,20 @@ public class SportListActivity extends AppCompatActivity {
     private Links nfl = null;
     private Links mma = null;
     private Links nhl = null;
-    private Links cricket = null;
+    //private Links cricket = null;
     private Links ncaabb = null;
     private Links rugby = null;
+    private Links mlb = null;
 
     private Map<String, Collection<String>> soccerLinks;
     private Map<String, Collection<String>> nbaLinks;
     private Map<String, Collection<String>> nflLinks;
     private Map<String, Collection<String>> mmaLinks;
     private Map<String, Collection<String>> nhlLinks;
-    private Map<String, Collection<String>> cricketLinks;
+    //private Map<String, Collection<String>> cricketLinks;
     private Map<String, Collection<String>> ncaabbLinks;
     private Map<String, Collection<String>> rugbyLinks;
+    private Map<String, Collection<String>> mlbLinks;
 
     private ArrayList<String> emptyStore = new ArrayList<>();
 
@@ -122,18 +124,29 @@ public class SportListActivity extends AppCompatActivity {
 
                     break;
                 }
-                case R.id.cricket_button: {
-                    // Do work related to button 4
+                case R.id.mlb_button : {
                     TextView title = findViewById(R.id.link_title);
-                    title.setText(R.string.cricket);
-                    cricket = new Links(Constants.cricketURL);
-                    cricketLinks = cricket.getFinalLinks();
-                    ArrayList<String> l = new ArrayList<>(cricketLinks.keySet());
+                    title.setText(R.string.mlb);
+                    mlb = new Links(Constants.mlbURL);
+                    mlbLinks = mlb.getFinalLinks();
+                    ArrayList<String> l = new ArrayList<>(mlbLinks.keySet());
                     checkEmpty(l);
                     // Creating adapter for spinner
                     createAdapter(l, spinner);
                     break;
                 }
+//                case R.id.cricket_button: {
+//                    // Do work related to button 4
+//                    TextView title = findViewById(R.id.link_title);
+//                    title.setText(R.string.cricket);
+//                    cricket = new Links(Constants.cricketURL);
+//                    cricketLinks = cricket.getFinalLinks();
+//                    ArrayList<String> l = new ArrayList<>(cricketLinks.keySet());
+//                    checkEmpty(l);
+//                    // Creating adapter for spinner
+//                    createAdapter(l, spinner);
+//                    break;
+//                }
                 case R.id.rugby_button: {
                     // Do work related to button 5
                     TextView title = findViewById(R.id.link_title);
@@ -226,10 +239,10 @@ public class SportListActivity extends AppCompatActivity {
 
                             break;
                         }
-                        case R.id.cricket_button: {
+                        case R.id.mlb_button: {
                             ArrayList<String> testLinks;
-                            if (cricketLinks.get(parent.getItemAtPosition(position).toString()) != null) {
-                                testLinks = new ArrayList<>(cricketLinks.get(parent.getItemAtPosition(position).toString()));
+                            if (mlbLinks.get(parent.getItemAtPosition(position).toString()) != null) {
+                                testLinks = new ArrayList<>(mlbLinks.get(parent.getItemAtPosition(position).toString()));
                             } else {
                                 testLinks = new ArrayList<>();
                             }

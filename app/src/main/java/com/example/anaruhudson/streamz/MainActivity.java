@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("intVariableName", id);
                 startActivity(intent);
                 break;
-            case R.id.cricket_button:
+            case R.id.mlb_button:
                 intent.putExtra("intVariableName", id);
                 startActivity(intent);
                 break;

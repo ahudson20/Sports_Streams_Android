@@ -32,7 +32,7 @@ public class Links {
                 String text = m.text();
                 /* FIGURE OUT A BETTER WAY OF FILTERING LINKS?? */
                 /* Doesnt make sense to keep manually filtering links? - most are permanent links though.. */
-                if((text.matches(".*\\d+.*") || text.contains("Game Thread")) && !text.contains("PS4") && !text.contains("NHL TV") && !text.contains("PLEASE")){
+                if((text.matches(".*\\d+.*") || text.contains("Game Thread")) && !text.contains("PS4") && !text.contains("NHL TV") && !text.contains("PLEASE") && !text.contains("Unlocator")){
                     String httpHref = m.parent().attr("abs:href");
 
                     text = text.replaceAll("(\\[)([A-Za-z0-9:\\s])*(])", "").trim();
@@ -40,6 +40,8 @@ public class Links {
                     text = text.replaceAll("(?i)archive thread:", "").trim();
                     text = text.replaceAll("(?i)event thread thread:", "").trim();
                     text = text.replaceAll("(\\()([A-Za-z0-9:\\s])*(\\))", "").trim();
+                    text = text.replaceAll("(?i)et", "").trim();
+                    text = text.replaceAll("(([0-9]+):([0-9]+)(\\s)((?i)(pm|am)))", "").trim();
 
                     if(httpHref.length() > 0){
                         finalLinks.put(text, diveLink(httpHref));
