@@ -59,11 +59,11 @@ public class SportListActivity extends AppCompatActivity {
         StrictMode.ThreadPolicy threadPolicy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(threadPolicy);
 
-        /*******SPINNER**************/
+        //SPINNER
         Spinner spinner = findViewById(R.id.combo_spinner);
-        /****************************/
 
-        /*******RECYCLERVIEW********/
+
+        //RECYCLERVIEW
         mRecyclerView = findViewById(R.id.list_container);
 
         // use this setting to improve performance if you know that changes
@@ -75,7 +75,7 @@ public class SportListActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(mLayoutManager);
         mAdapter = new MyAdapter(emptyStore);
         mRecyclerView.setAdapter(mAdapter);
-        /***************************/
+
 
         Intent mIntent = getIntent();
         intValue = mIntent.getIntExtra("intVariableName", 0);
@@ -83,104 +83,105 @@ public class SportListActivity extends AppCompatActivity {
             // error handling (Will come in this if when button id is invalid)
             startActivity(new Intent(SportListActivity.this, MainActivity.class));
         }else{
-            if(intValue == R.id.soccer_button){
-                // Do work related to button 1
-                TextView title = findViewById(R.id.link_title);
-                title.setText(R.string.soccer);
-                soccer = new Links(Constants.soccerURL);
-                soccerLinks = soccer.getFinalLinks();
-                ArrayList<String> l = new ArrayList<>(soccerLinks.keySet());
-                checkEmpty(l);
+            switch (intValue) {
+                case R.id.soccer_button: {
+                    // Do work related to button 1
+                    TextView title = findViewById(R.id.link_title);
+                    title.setText(R.string.soccer);
+                    soccer = new Links(Constants.soccerURL);
+                    soccerLinks = soccer.getFinalLinks();
+                    ArrayList<String> l = new ArrayList<>(soccerLinks.keySet());
+                    checkEmpty(l);
 
-                // Creating adapter for spinner
-                ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, l);
-                dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                spinner.setAdapter(dataAdapter);
-            }else if(intValue == R.id.nba_button) {
-                // Do work related to button 2
-                TextView title = findViewById(R.id.link_title);
-                title.setText(R.string.nba);
-                nba = new Links(Constants.nbaURL);
-                nbaLinks = nba.getFinalLinks();
-                ArrayList<String> l = new ArrayList<>(nbaLinks.keySet());
-                checkEmpty(l);
-                // Creating adapter for spinner
-                ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, l);
-                dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                spinner.setAdapter(dataAdapter);
-            }else if(intValue == R.id.nfl_button) {
-                // Do work related to button 3
-                TextView title = findViewById(R.id.link_title);
-                title.setText(R.string.nfl);
-                nfl = new Links(Constants.nflURL);
-                nflLinks = nfl.getFinalLinks();
-                ArrayList<String> l = new ArrayList<>(nflLinks.keySet());
-                checkEmpty(l);
-                // Creating adapter for spinner
-                ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, l);
-                dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                spinner.setAdapter(dataAdapter);
+                    // Creating adapter for spinner
+                    createAdapter(l, spinner);
+                    break;
+                }
+                case R.id.nba_button: {
+                    // Do work related to button 2
+                    TextView title = findViewById(R.id.link_title);
+                    title.setText(R.string.nba);
+                    nba = new Links(Constants.nbaURL);
+                    nbaLinks = nba.getFinalLinks();
+                    ArrayList<String> l = new ArrayList<>(nbaLinks.keySet());
+                    checkEmpty(l);
+                    // Creating adapter for spinner
+                    createAdapter(l, spinner);
+                    break;
+                }
+                case R.id.nfl_button: {
+                    // Do work related to button 3
+                    TextView title = findViewById(R.id.link_title);
+                    title.setText(R.string.nfl);
+                    nfl = new Links(Constants.nflURL);
+                    nflLinks = nfl.getFinalLinks();
+                    ArrayList<String> l = new ArrayList<>(nflLinks.keySet());
+                    checkEmpty(l);
+                    // Creating adapter for spinner
+                    createAdapter(l, spinner);
 
-            }else if(intValue == R.id.cricket_button) {
-                // Do work related to button 4
-                TextView title = findViewById(R.id.link_title);
-                title.setText(R.string.cricket);
-                cricket = new Links(Constants.cricketURL);
-                cricketLinks = cricket.getFinalLinks();
-                ArrayList<String> l = new ArrayList<>(cricketLinks.keySet());
-                checkEmpty(l);
-                // Creating adapter for spinner
-                ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, l);
-                dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                spinner.setAdapter(dataAdapter);
-            }else if(intValue == R.id.rugby_button) {
-                // Do work related to button 5
-                TextView title = findViewById(R.id.link_title);
-                title.setText(R.string.rugby);
-                rugby = new Links(Constants.rugbyURL);
-                rugbyLinks = rugby.getFinalLinks();
-                ArrayList<String> l = new ArrayList<>(rugbyLinks.keySet());
-                checkEmpty(l);
-                // Creating adapter for spinner
-                ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, l);
-                dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                spinner.setAdapter(dataAdapter);
-            }else if(intValue == R.id.mma_button) {
-                // Do work related to button 5
-                TextView title = findViewById(R.id.link_title);
-                title.setText(R.string.mma);
-                mma = new Links(Constants.mmaURL);
-                mmaLinks = mma.getFinalLinks();
-                ArrayList<String> l = new ArrayList<>(mmaLinks.keySet());
-                checkEmpty(l);
-                // Creating adapter for spinner
-                ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, l);
-                dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                spinner.setAdapter(dataAdapter);
-            }else if(intValue == R.id.nhl_button) {
-                // Do work related to button 5
-                TextView title = findViewById(R.id.link_title);
-                title.setText(R.string.nhl);
-                nhl = new Links(Constants.nhlURL);
-                nhlLinks = nhl.getFinalLinks();
-                ArrayList<String> l = new ArrayList<>(nhlLinks.keySet());
-                checkEmpty(l);
-                // Creating adapter for spinner
-                ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, l);
-                dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                spinner.setAdapter(dataAdapter);
-            }else if(intValue == R.id.ncaabb_button) {
-                // Do work related to button 5
-                TextView title = findViewById(R.id.link_title);
-                title.setText(R.string.ncaabb);
-                ncaabb = new Links(Constants.ncaabbURL);
-                ncaabbLinks = ncaabb.getFinalLinks();
-                ArrayList<String> l = new ArrayList<>(ncaabbLinks.keySet());
-                checkEmpty(l);
-                // Creating adapter for spinner
-                ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, l);
-                dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                spinner.setAdapter(dataAdapter);
+                    break;
+                }
+                case R.id.cricket_button: {
+                    // Do work related to button 4
+                    TextView title = findViewById(R.id.link_title);
+                    title.setText(R.string.cricket);
+                    cricket = new Links(Constants.cricketURL);
+                    cricketLinks = cricket.getFinalLinks();
+                    ArrayList<String> l = new ArrayList<>(cricketLinks.keySet());
+                    checkEmpty(l);
+                    // Creating adapter for spinner
+                    createAdapter(l, spinner);
+                    break;
+                }
+                case R.id.rugby_button: {
+                    // Do work related to button 5
+                    TextView title = findViewById(R.id.link_title);
+                    title.setText(R.string.rugby);
+                    rugby = new Links(Constants.rugbyURL);
+                    rugbyLinks = rugby.getFinalLinks();
+                    ArrayList<String> l = new ArrayList<>(rugbyLinks.keySet());
+                    checkEmpty(l);
+                    // Creating adapter for spinner
+                    createAdapter(l, spinner);
+                    break;
+                }
+                case R.id.mma_button: {
+                    // Do work related to button 5
+                    TextView title = findViewById(R.id.link_title);
+                    title.setText(R.string.mma);
+                    mma = new Links(Constants.mmaURL);
+                    mmaLinks = mma.getFinalLinks();
+                    ArrayList<String> l = new ArrayList<>(mmaLinks.keySet());
+                    checkEmpty(l);
+                    // Creating adapter for spinner
+                    createAdapter(l, spinner);
+                    break;
+                }
+                case R.id.nhl_button: {
+                    // Do work related to button 5
+                    TextView title = findViewById(R.id.link_title);
+                    title.setText(R.string.nhl);
+                    nhl = new Links(Constants.nhlURL);
+                    nhlLinks = nhl.getFinalLinks();
+                    ArrayList<String> l = new ArrayList<>(nhlLinks.keySet());
+                    checkEmpty(l);
+                    // Creating adapter for spinner
+                    createAdapter(l, spinner);
+                    break;
+                }
+                case R.id.ncaabb_button: {
+                    // Do work related to button 5
+                    TextView title = findViewById(R.id.link_title);
+                    title.setText(R.string.ncaabb);
+                    ncaabb = new Links(Constants.ncaabbURL);
+                    ncaabbLinks = ncaabb.getFinalLinks();
+                    ArrayList<String> l = new ArrayList<>(ncaabbLinks.keySet());
+                    checkEmpty(l);
+                    // Creating adapter for spinner
+                    createAdapter(l, spinner);
+                    break;
+                }
             }
         }
 
@@ -192,101 +193,91 @@ public class SportListActivity extends AppCompatActivity {
                     // error handling (Will come in this if when button id is invalid)
                     startActivity(new Intent(SportListActivity.this, MainActivity.class));
                 } else {
-                    if (a == R.id.soccer_button) {
-//                        ArrayList<String> testLinks = new ArrayList<>(soccerLinks.get(parent.getItemAtPosition(position).toString()));
-                        ArrayList<String> testLinks;
-                        if(soccerLinks.get(parent.getItemAtPosition(position).toString()) != null){
-                            testLinks = new ArrayList<>(soccerLinks.get(parent.getItemAtPosition(position).toString()));
-                        }else{
-                            testLinks = new ArrayList<>();
+                    switch (a) {
+                        case R.id.soccer_button: {
+                            ArrayList<String> testLinks;
+                            if (soccerLinks.get(parent.getItemAtPosition(position).toString()) != null) {
+                                testLinks = new ArrayList<>(soccerLinks.get(parent.getItemAtPosition(position).toString()));
+                            } else {
+                                testLinks = new ArrayList<>();
+                            }
+                            updateAdapter(testLinks);
+                            break;
                         }
-                        mAdapter = new MyAdapter(testLinks);
-                        mRecyclerView.setAdapter(mAdapter);
-                        mAdapter.notifyDataSetChanged();
-                    }else if (a == R.id.nba_button) {
-//                        ArrayList<String> testLinks = new ArrayList<>(nbaLinks.get(parent.getItemAtPosition(position).toString()));
-                        ArrayList<String> testLinks;
-                        if(nbaLinks.get(parent.getItemAtPosition(position).toString()) != null){
-                            testLinks = new ArrayList<>(nbaLinks.get(parent.getItemAtPosition(position).toString()));
-                        }else{
-                            testLinks = new ArrayList<>();
-                        }
+                        case R.id.nba_button: {
+                            ArrayList<String> testLinks;
+                            if (nbaLinks.get(parent.getItemAtPosition(position).toString()) != null) {
+                                testLinks = new ArrayList<>(nbaLinks.get(parent.getItemAtPosition(position).toString()));
+                            } else {
+                                testLinks = new ArrayList<>();
+                            }
+                            updateAdapter(testLinks);
 
-                        mAdapter = new MyAdapter(testLinks);
-                        mRecyclerView.setAdapter(mAdapter);
-                        mAdapter.notifyDataSetChanged();
-
-                    }else if (a == R.id.nfl_button) {
-//                        ArrayList<String> testLinks = new ArrayList<>(nflLinks.get(parent.getItemAtPosition(position).toString()));
-                        ArrayList<String> testLinks;
-                        if(nflLinks.get(parent.getItemAtPosition(position).toString()) != null){
-                            testLinks = new ArrayList<>(nflLinks.get(parent.getItemAtPosition(position).toString()));
-                        }else{
-                            testLinks = new ArrayList<>();
+                            break;
                         }
-                        mAdapter = new MyAdapter(testLinks);
-                        mRecyclerView.setAdapter(mAdapter);
-                        mAdapter.notifyDataSetChanged();
+                        case R.id.nfl_button: {
+                            ArrayList<String> testLinks;
+                            if (nflLinks.get(parent.getItemAtPosition(position).toString()) != null) {
+                                testLinks = new ArrayList<>(nflLinks.get(parent.getItemAtPosition(position).toString()));
+                            } else {
+                                testLinks = new ArrayList<>();
+                            }
+                            updateAdapter(testLinks);
 
-                    }else if (a == R.id.cricket_button) {
-//                        ArrayList<String> testLinks = new ArrayList<>(cricketLinks.get(parent.getItemAtPosition(position).toString()));
-                        ArrayList<String> testLinks;
-                        if(cricketLinks.get(parent.getItemAtPosition(position).toString()) != null){
-                            testLinks = new ArrayList<>(cricketLinks.get(parent.getItemAtPosition(position).toString()));
-                        }else{
-                            testLinks = new ArrayList<>();
+                            break;
                         }
-                        mAdapter = new MyAdapter(testLinks);
-                        mRecyclerView.setAdapter(mAdapter);
-                        mAdapter.notifyDataSetChanged();
-                    }else if (a == R.id.rugby_button) {
-//                        ArrayList<String> testLinks = new ArrayList<>(rugbyLinks.get(parent.getItemAtPosition(position).toString()));
-                        ArrayList<String> testLinks;
-                        if(rugbyLinks.get(parent.getItemAtPosition(position).toString()) != null){
-                            testLinks = new ArrayList<>(rugbyLinks.get(parent.getItemAtPosition(position).toString()));
-                        }else{
-                            testLinks = new ArrayList<>();
+                        case R.id.cricket_button: {
+                            ArrayList<String> testLinks;
+                            if (cricketLinks.get(parent.getItemAtPosition(position).toString()) != null) {
+                                testLinks = new ArrayList<>(cricketLinks.get(parent.getItemAtPosition(position).toString()));
+                            } else {
+                                testLinks = new ArrayList<>();
+                            }
+                            updateAdapter(testLinks);
+                            break;
                         }
-
-
-                        mAdapter = new MyAdapter(testLinks);
-                        mRecyclerView.setAdapter(mAdapter);
-                        mAdapter.notifyDataSetChanged();
-                    }else if (a == R.id.mma_button) {
-                        ArrayList<String> testLinks;
-                        if(mmaLinks.get(parent.getItemAtPosition(position).toString()) != null){
-                            testLinks = new ArrayList<>(mmaLinks.get(parent.getItemAtPosition(position).toString()));
-                        }else{
-                            testLinks = new ArrayList<>();
+                        case R.id.rugby_button: {
+                            ArrayList<String> testLinks;
+                            if (rugbyLinks.get(parent.getItemAtPosition(position).toString()) != null) {
+                                testLinks = new ArrayList<>(rugbyLinks.get(parent.getItemAtPosition(position).toString()));
+                            } else {
+                                testLinks = new ArrayList<>();
+                            }
+                            updateAdapter(testLinks);
+                            break;
                         }
-                        mAdapter = new MyAdapter(testLinks);
-                        mRecyclerView.setAdapter(mAdapter);
-                        mAdapter.notifyDataSetChanged();
+                        case R.id.mma_button: {
+                            ArrayList<String> testLinks;
+                            if (mmaLinks.get(parent.getItemAtPosition(position).toString()) != null) {
+                                testLinks = new ArrayList<>(mmaLinks.get(parent.getItemAtPosition(position).toString()));
+                            } else {
+                                testLinks = new ArrayList<>();
+                            }
+                            updateAdapter(testLinks);
 //
-                    }else if (a == R.id.nhl_button) {
-//                        ArrayList<String> testLinks = new ArrayList<>(nhlLinks.get(parent.getItemAtPosition(position).toString()));
-                        ArrayList<String> testLinks;
-                        if(nhlLinks.get(parent.getItemAtPosition(position).toString()) != null){
-                            testLinks = new ArrayList<>(nhlLinks.get(parent.getItemAtPosition(position).toString()));
-                        }else{
-                            testLinks = new ArrayList<>();
+                            break;
                         }
-                        mAdapter = new MyAdapter(testLinks);
-                        mRecyclerView.setAdapter(mAdapter);
-                        mAdapter.notifyDataSetChanged();
+                        case R.id.nhl_button: {
+                            ArrayList<String> testLinks;
+                            if (nhlLinks.get(parent.getItemAtPosition(position).toString()) != null) {
+                                testLinks = new ArrayList<>(nhlLinks.get(parent.getItemAtPosition(position).toString()));
+                            } else {
+                                testLinks = new ArrayList<>();
+                            }
+                            updateAdapter(testLinks);
 
-                    }else if (a == R.id.ncaabb_button) {
-                        ArrayList<String> testLinks;
-                        if(ncaabbLinks.get(parent.getItemAtPosition(position).toString()) != null){
-                            testLinks = new ArrayList<>(ncaabbLinks.get(parent.getItemAtPosition(position).toString()));
-                        }else{
-                            testLinks = new ArrayList<>();
+                            break;
                         }
-//                        if(testLinks.size() != 0) {
-                            mAdapter = new MyAdapter(testLinks);
-                            mRecyclerView.setAdapter(mAdapter);
-                            mAdapter.notifyDataSetChanged();
-//                        }
+                        case R.id.ncaabb_button: {
+                            ArrayList<String> testLinks;
+                            if (ncaabbLinks.get(parent.getItemAtPosition(position).toString()) != null) {
+                                testLinks = new ArrayList<>(ncaabbLinks.get(parent.getItemAtPosition(position).toString()));
+                            } else {
+                                testLinks = new ArrayList<>();
+                            }
+                            updateAdapter(testLinks);
+                            break;
+                        }
                     }
                 }
             }
@@ -302,5 +293,17 @@ public class SportListActivity extends AppCompatActivity {
         if(l.size() == 0){
             l.add("There are no games currently available!");
         }
+    }
+
+    private void createAdapter(ArrayList<String> l, Spinner spinner){
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, l);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(dataAdapter);
+    }
+
+    private void updateAdapter(ArrayList<String> testLinks){
+        mAdapter = new MyAdapter(testLinks);
+        mRecyclerView.setAdapter(mAdapter);
+        mAdapter.notifyDataSetChanged();
     }
 }

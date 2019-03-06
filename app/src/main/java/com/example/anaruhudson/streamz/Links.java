@@ -39,6 +39,7 @@ public class Links {
                     text = text.replaceAll("(?i)game thread:", "").trim();
                     text = text.replaceAll("(?i)archive thread:", "").trim();
                     text = text.replaceAll("(?i)event thread thread:", "").trim();
+                    text = text.replaceAll("(\\()([A-Za-z0-9:\\s])*(\\))", "").trim();
 
                     if(httpHref.length() > 0){
                         finalLinks.put(text, diveLink(httpHref));
@@ -67,7 +68,7 @@ public class Links {
 
             for(Element h : streamsOnly){
                 String httpHref = h.attr("abs:href");
-                if(!(httpHref.contains("https://www.reddit.com") || httpHref.contains("https://discord") || httpHref.contains("https://time.is"))){
+                if(!(httpHref.contains("https://www.reddit.com") || httpHref.contains("https://discord") || httpHref.contains("https://time.is") || httpHref.equals("https://twitch.tv"))){
                     eachLink.add(httpHref);
                 }
             }

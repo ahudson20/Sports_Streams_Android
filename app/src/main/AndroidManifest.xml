@@ -10,15 +10,15 @@
         android:roundIcon="@mipmap/ic_launcher_round_1"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity" android:configChanges="orientation|screenSize" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LinksActivity" />
-        <activity android:name=".SportListActivity" />
+        <activity android:name=".LinksActivity" android:configChanges="orientation|screenSize" />
+        <activity android:name=".SportListActivity" android:configChanges="orientation|screenSize" />
     </application>
 
 </manifest>
