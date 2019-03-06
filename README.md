@@ -12,7 +12,6 @@
 
 
 ## Sports:
-## Sports
 
 * [NBA](https://www.reddit.com/r/nbastreams/)
 * [NFL](https://www.reddit.com/r/nflstreams/)
