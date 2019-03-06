@@ -8,3 +8,4 @@
 * Make RecyclerView fill screen, center align text?, drop title down slightly
 * Don't reload app on screen rotation
 * Soft? save state vs. reload every time buttons are pressed
+* Update app icon
