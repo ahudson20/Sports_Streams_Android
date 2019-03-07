@@ -5,71 +5,94 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:gravity="top|center"
-    >
+    android:gravity="top|center">
+    <!--android:divider="?android:dividerHorizontal"-->
+    <!--android:showDividers="middle"-->
+
 
     <TextView
         android:layout_width="wrap_content"
-        android:textSize="28sp"
         android:layout_height="wrap_content"
-        android:text="Sports Streams"/>
+        android:layout_marginTop="20sp"
+        android:gravity="center"
+        android:text="@string/sports_streams"
+        android:textColor="#000"
+        android:textSize="32sp" />
 
 
     <Button
-        android:layout_weight="2"
         android:id="@+id/soccer_button"
-        android:onClick="openSport"
-        android:text="@string/soccer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <Button
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"
         android:layout_weight="2"
+        android:background="@drawable/borderbottom_first_item"
+        android:onClick="openSport"
+        android:text="@string/soccer" />
+
+
+    <Button
         android:id="@+id/nba_button"
-        android:onClick="openSport"
-        android:text="@string/nba"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <Button
+        android:layout_height="wrap_content"
         android:layout_weight="2"
+        android:background="@drawable/borderbottom"
+        android:onClick="openSport"
+        android:text="@string/nba" />
+
+    <Button
         android:id="@+id/nfl_button"
-        android:onClick="openSport"
-        android:text="@string/nfl"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <Button
+        android:layout_height="wrap_content"
         android:layout_weight="2"
+        android:background="@drawable/borderbottom"
+        android:onClick="openSport"
+        android:text="@string/nfl" />
+
+    <Button
         android:id="@+id/mlb_button"
-        android:onClick="openSport"
-        android:text="@string/mlb"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <Button
+        android:layout_height="wrap_content"
         android:layout_weight="2"
+        android:background="@drawable/borderbottom"
+        android:onClick="openSport"
+        android:text="@string/mlb" />
+
+    <Button
         android:id="@+id/rugby_button"
-        android:onClick="openSport"
-        android:text="@string/rugby"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <Button
+        android:layout_height="wrap_content"
         android:layout_weight="2"
+        android:background="@drawable/borderbottom"
+        android:onClick="openSport"
+        android:text="@string/rugby" />
+
+    <Button
         android:id="@+id/mma_button"
-        android:onClick="openSport"
-        android:text="@string/mma"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <Button
+        android:layout_height="wrap_content"
         android:layout_weight="2"
+        android:background="@drawable/borderbottom"
+        android:onClick="openSport"
+        android:text="@string/mma" />
+
+    <Button
         android:id="@+id/nhl_button"
-        android:onClick="openSport"
-        android:text="@string/nhl"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <Button
+        android:layout_height="wrap_content"
         android:layout_weight="2"
-        android:id="@+id/ncaabb_button"
+        android:background="@drawable/borderbottom"
         android:onClick="openSport"
-        android:text="@string/ncaabb"
+        android:text="@string/nhl" />
+
+    <Button
+        android:id="@+id/ncaabb_button"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20sp"
+        android:layout_weight="2"
+        android:background="@drawable/borderbottom_last_item"
+        android:onClick="openSport"
+        android:text="@string/ncaabb" />
 
 </LinearLayout>

@@ -10,4 +10,5 @@ public final class Constants {
     public static final String nhlURL = "https://www.reddit.com/r/NHLStreams";
     public static final String ncaabbURL = "https://www.reddit.com/r/ncaaBBallStreams/";
     public static final String mlbURL = "https://www.reddit.com/r/MLBStreams/";
+    //colours : #FF5D5D, #57319E
 }

@@ -9,6 +9,7 @@
     <string name="nhl">NHL</string>
     <string name="ncaabb">NCAA BB</string>
     <string name="mlb">MLB</string>
+    <string name="sports_streams">Sports</string>
 
     <!--<string-array name="planets_array">-->
         <!--<item>Mercury</item>-->
