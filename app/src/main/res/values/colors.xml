@@ -3,4 +3,6 @@
     <color name="colorPrimary">#3F51B5</color><!-- Unused as disable the status bar at the top-->
     <color name="colorPrimaryDark">#FF5D5D</color><!--color of notification bar-->
     <color name="colorAccent">#FF4081</color><!--colour of check boxes, radio buttons etc. ??-->
+    <color name="white">#ffffff</color>
+    <color name="grey">#d3d3d3</color>
 </resources>
