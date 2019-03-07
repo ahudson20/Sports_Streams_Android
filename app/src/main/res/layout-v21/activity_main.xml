@@ -19,6 +19,7 @@
         android:text="@string/sports_streams"
         android:textColor="#000"
         android:textSize="32sp"
+        android:stateListAnimator="@null"
         />
 
 
@@ -41,8 +42,7 @@
         android:layout_weight="2"
         android:background="@drawable/borderbottom"
         android:onClick="openSport"
-        android:text="@string/nba"
-        />
+        android:text="@string/nba" />
 
     <Button
         android:id="@+id/nfl_button"
@@ -51,8 +51,7 @@
         android:layout_weight="2"
         android:background="@drawable/borderbottom"
         android:onClick="openSport"
-        android:text="@string/nfl"
-        />
+        android:text="@string/nfl" />
 
     <Button
         android:id="@+id/mlb_button"
@@ -61,8 +60,7 @@
         android:layout_weight="2"
         android:background="@drawable/borderbottom"
         android:onClick="openSport"
-        android:text="@string/mlb"
-        />
+        android:text="@string/mlb" />
 
     <Button
         android:id="@+id/rugby_button"
@@ -71,8 +69,7 @@
         android:layout_weight="2"
         android:background="@drawable/borderbottom"
         android:onClick="openSport"
-        android:text="@string/rugby"
-        />
+        android:text="@string/rugby" />
 
     <Button
         android:id="@+id/mma_button"
@@ -81,8 +78,7 @@
         android:layout_weight="2"
         android:background="@drawable/borderbottom"
         android:onClick="openSport"
-        android:text="@string/mma"
-        />
+        android:text="@string/mma" />
 
     <Button
         android:id="@+id/nhl_button"
@@ -91,8 +87,7 @@
         android:layout_weight="2"
         android:background="@drawable/borderbottom"
         android:onClick="openSport"
-        android:text="@string/nhl"
-        />
+        android:text="@string/nhl" />
 
     <Button
         android:id="@+id/ncaabb_button"
@@ -102,7 +97,6 @@
         android:layout_weight="2"
         android:background="@drawable/borderbottom_last_item"
         android:onClick="openSport"
-        android:text="@string/ncaabb"
-        />
+        android:text="@string/ncaabb" />
 
 </LinearLayout>

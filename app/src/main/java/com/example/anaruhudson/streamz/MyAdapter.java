@@ -36,7 +36,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         @Override
         public void onClick(View view) {
             String s = mTextView.getText().toString();
-            Toast.makeText(view.getContext(), "position = " + getAdapterPosition() + " " + s, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(view.getContext(), "position = " + getAdapterPosition() + " " + s, Toast.LENGTH_SHORT).show();
 
             if (!s.startsWith("http://") && !s.startsWith("https://")) {
                 s = "http://" + s;
