@@ -241,18 +241,31 @@ public class SportListActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Takes an ArrayList, checks if it is empty, and if it is,
+     * adds a String to it, so that the UI shows that there are no games available,
+     * rather than just being a blank screen.
+     * @param l ArrayList to check if it is empty.
+     */
     private void checkEmpty(ArrayList<String> l) {
         if(l.size() == 0){
             l.add("There are no games currently available!");
         }
     }
 
+    /**
+     * Takes the strings in the ArrayList l, and uses them as the values for the spinner.
+     */
     private void createAdapter(){
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, this.l);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         this.spinner.setAdapter(dataAdapter);
     }
 
+    /**
+     * Takes the links associated with each live game, and populates the RecyclerView list with them.
+     * @param testLinks ArrayList of links to populate the RecyclerView with.
+     */
     private void updateAdapter(ArrayList<String> testLinks){
         mAdapter = new MyAdapter(testLinks);
         mRecyclerView.setAdapter(mAdapter);

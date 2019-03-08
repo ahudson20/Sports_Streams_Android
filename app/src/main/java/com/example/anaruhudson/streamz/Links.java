@@ -40,7 +40,7 @@ public class Links {
                     text = text.replaceAll("(?i)event thread thread:", "").trim();
                     text = text.replaceAll("(\\()([A-Za-z0-9:\\s])*(\\))", "").trim();
                     text = text.replaceAll("(?i)et", "").trim();
-                    text = text.replaceAll("(([0-9]+):([0-9]+)(\\s)((?i)(pm|am)))", "").trim();
+                    text = text.replaceAll("(([0-9]+):([0-9]+)(\\s)((?i)(pm|am|et|pst)))", "").trim();
 
                     if(httpHref.length() > 0){
                         finalLinks.put(text, diveLink(httpHref));
