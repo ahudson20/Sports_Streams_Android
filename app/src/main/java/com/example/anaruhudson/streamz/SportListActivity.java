@@ -1,8 +1,9 @@
 package com.example.anaruhudson.streamz;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.StrictMode;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,6 +11,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -47,22 +50,24 @@ public class SportListActivity extends AppCompatActivity {
 
     private int intValue;
 
+    private Spinner spinner;
+
+    private ArrayList<String> l;
+
+    private ProgressBar BAR;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sport_list);
 
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.hide();
-        }
-
-        StrictMode.ThreadPolicy threadPolicy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(threadPolicy);
+        this.BAR = (ProgressBar)findViewById(R.id.progressBar);
 
         //SPINNER
-        Spinner spinner = findViewById(R.id.combo_spinner);
+        //Spinner spinner = findViewById(R.id.combo_spinner);
+        this.spinner = findViewById(R.id.combo_spinner);
 
 
         //RECYCLERVIEW
@@ -90,109 +95,55 @@ public class SportListActivity extends AppCompatActivity {
                     // Do work related to button 1
                     TextView title = findViewById(R.id.link_title);
                     title.setText(R.string.soccer);
-                    soccer = new Links(Constants.soccerURL);
-                    soccerLinks = soccer.getFinalLinks();
-                    ArrayList<String> l = new ArrayList<>(soccerLinks.keySet());
-                    checkEmpty(l);
-
-                    // Creating adapter for spinner
-                    createAdapter(l, spinner);
+                    new BackgroundTask().execute(intValue);
                     break;
                 }
                 case R.id.nba_button: {
                     // Do work related to button 2
                     TextView title = findViewById(R.id.link_title);
                     title.setText(R.string.nba);
-                    nba = new Links(Constants.nbaURL);
-                    nbaLinks = nba.getFinalLinks();
-                    ArrayList<String> l = new ArrayList<>(nbaLinks.keySet());
-                    checkEmpty(l);
-                    // Creating adapter for spinner
-                    createAdapter(l, spinner);
+                    new BackgroundTask().execute(intValue);
                     break;
                 }
                 case R.id.nfl_button: {
                     // Do work related to button 3
                     TextView title = findViewById(R.id.link_title);
                     title.setText(R.string.nfl);
-                    nfl = new Links(Constants.nflURL);
-                    nflLinks = nfl.getFinalLinks();
-                    ArrayList<String> l = new ArrayList<>(nflLinks.keySet());
-                    checkEmpty(l);
-                    // Creating adapter for spinner
-                    createAdapter(l, spinner);
-
+                    new BackgroundTask().execute(intValue);
                     break;
                 }
                 case R.id.mlb_button : {
                     TextView title = findViewById(R.id.link_title);
                     title.setText(R.string.mlb);
-                    mlb = new Links(Constants.mlbURL);
-                    mlbLinks = mlb.getFinalLinks();
-                    ArrayList<String> l = new ArrayList<>(mlbLinks.keySet());
-                    checkEmpty(l);
-                    // Creating adapter for spinner
-                    createAdapter(l, spinner);
+                    new BackgroundTask().execute(intValue);
                     break;
                 }
-//                case R.id.cricket_button: {
-//                    // Do work related to button 4
-//                    TextView title = findViewById(R.id.link_title);
-//                    title.setText(R.string.cricket);
-//                    cricket = new Links(Constants.cricketURL);
-//                    cricketLinks = cricket.getFinalLinks();
-//                    ArrayList<String> l = new ArrayList<>(cricketLinks.keySet());
-//                    checkEmpty(l);
-//                    // Creating adapter for spinner
-//                    createAdapter(l, spinner);
-//                    break;
-//                }
                 case R.id.rugby_button: {
                     // Do work related to button 5
                     TextView title = findViewById(R.id.link_title);
                     title.setText(R.string.rugby);
-                    rugby = new Links(Constants.rugbyURL);
-                    rugbyLinks = rugby.getFinalLinks();
-                    ArrayList<String> l = new ArrayList<>(rugbyLinks.keySet());
-                    checkEmpty(l);
-                    // Creating adapter for spinner
-                    createAdapter(l, spinner);
+                    new BackgroundTask().execute(intValue);
                     break;
                 }
                 case R.id.mma_button: {
                     // Do work related to button 5
                     TextView title = findViewById(R.id.link_title);
                     title.setText(R.string.mma);
-                    mma = new Links(Constants.mmaURL);
-                    mmaLinks = mma.getFinalLinks();
-                    ArrayList<String> l = new ArrayList<>(mmaLinks.keySet());
-                    checkEmpty(l);
-                    // Creating adapter for spinner
-                    createAdapter(l, spinner);
+                    new BackgroundTask().execute(intValue);
                     break;
                 }
                 case R.id.nhl_button: {
                     // Do work related to button 5
                     TextView title = findViewById(R.id.link_title);
                     title.setText(R.string.nhl);
-                    nhl = new Links(Constants.nhlURL);
-                    nhlLinks = nhl.getFinalLinks();
-                    ArrayList<String> l = new ArrayList<>(nhlLinks.keySet());
-                    checkEmpty(l);
-                    // Creating adapter for spinner
-                    createAdapter(l, spinner);
+                    new BackgroundTask().execute(intValue);
                     break;
                 }
                 case R.id.ncaabb_button: {
                     // Do work related to button 5
                     TextView title = findViewById(R.id.link_title);
                     title.setText(R.string.ncaabb);
-                    ncaabb = new Links(Constants.ncaabbURL);
-                    ncaabbLinks = ncaabb.getFinalLinks();
-                    ArrayList<String> l = new ArrayList<>(ncaabbLinks.keySet());
-                    checkEmpty(l);
-                    // Creating adapter for spinner
-                    createAdapter(l, spinner);
+                    new BackgroundTask().execute(intValue);
                     break;
                 }
             }
@@ -267,7 +218,6 @@ public class SportListActivity extends AppCompatActivity {
                                 testLinks = new ArrayList<>();
                             }
                             updateAdapter(testLinks);
-//
                             break;
                         }
                         case R.id.nhl_button: {
@@ -278,7 +228,6 @@ public class SportListActivity extends AppCompatActivity {
                                 testLinks = new ArrayList<>();
                             }
                             updateAdapter(testLinks);
-
                             break;
                         }
                         case R.id.ncaabb_button: {
@@ -308,15 +257,93 @@ public class SportListActivity extends AppCompatActivity {
         }
     }
 
-    private void createAdapter(ArrayList<String> l, Spinner spinner){
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, l);
+    private void createAdapter(){
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, this.l);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(dataAdapter);
+        this.spinner.setAdapter(dataAdapter);
     }
 
     private void updateAdapter(ArrayList<String> testLinks){
         mAdapter = new MyAdapter(testLinks);
         mRecyclerView.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
+    }
+
+    private class BackgroundTask extends AsyncTask<Integer, Void, Void> {
+
+        @Override
+        protected Void doInBackground(Integer... integer) {
+
+            switch (integer[0]) {
+                case R.id.soccer_button: {
+                    soccer = new Links(Constants.soccerURL);
+                    soccerLinks = soccer.getFinalLinks();
+                    l = new ArrayList<>(soccerLinks.keySet());
+                    checkEmpty(l);
+                    break;
+                }
+                case R.id.nba_button: {
+                    nba = new Links(Constants.nbaURL);
+                    nbaLinks = nba.getFinalLinks();
+                    l = new ArrayList<>(nbaLinks.keySet());
+                    checkEmpty(l);
+                    break;
+                }
+                case R.id.nfl_button: {
+                    nfl = new Links(Constants.nflURL);
+                    nflLinks = nfl.getFinalLinks();
+                    l = new ArrayList<>(nflLinks.keySet());
+                    checkEmpty(l);
+                    break;
+                }
+                case R.id.mlb_button : {
+                    mlb = new Links(Constants.mlbURL);
+                    mlbLinks = mlb.getFinalLinks();
+                    l = new ArrayList<>(mlbLinks.keySet());
+                    checkEmpty(l);
+                    break;
+                }
+                case R.id.rugby_button: {
+                    rugby = new Links(Constants.rugbyURL);
+                    rugbyLinks = rugby.getFinalLinks();
+                    l = new ArrayList<>(rugbyLinks.keySet());
+                    checkEmpty(l);
+                    break;
+                }
+                case R.id.mma_button: {
+                    mma = new Links(Constants.mmaURL);
+                    mmaLinks = mma.getFinalLinks();
+                    l = new ArrayList<>(mmaLinks.keySet());
+                    checkEmpty(l);
+                    break;
+                }
+                case R.id.nhl_button: {
+                    nhl = new Links(Constants.nhlURL);
+                    nhlLinks = nhl.getFinalLinks();
+                    l = new ArrayList<>(nhlLinks.keySet());
+                    checkEmpty(l);
+                    break;
+                }
+                case R.id.ncaabb_button: {
+                    ncaabb = new Links(Constants.ncaabbURL);
+                    ncaabbLinks = ncaabb.getFinalLinks();
+                    l = new ArrayList<>(ncaabbLinks.keySet());
+                    checkEmpty(l);
+                    break;
+                }
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            BAR.setVisibility(View.VISIBLE);
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            BAR.setVisibility(View.GONE);// Hide progressbar when done loading
+            createAdapter();// Creating adapter for spinner
+        }
     }
 }
