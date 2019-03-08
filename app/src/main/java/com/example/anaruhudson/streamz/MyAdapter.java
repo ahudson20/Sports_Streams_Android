@@ -36,13 +36,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         @Override
         public void onClick(View view) {
             String s = mTextView.getText().toString();
-            //Toast.makeText(view.getContext(), "position = " + getAdapterPosition() + " " + s, Toast.LENGTH_SHORT).show();
 
             if (!s.startsWith("http://") && !s.startsWith("https://")) {
                 s = "http://" + s;
             }
 
-            Uri uri = Uri.parse(s); // missing 'http://' will cause crashed
+            Uri uri = Uri.parse(s);
             Intent intent = new Intent(Intent.ACTION_VIEW, uri);
             view.getContext().startActivity(intent);
         }
@@ -53,15 +52,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         mDataset = myDataset;
     }
 
-    // Create new views (invoked by the layout manager)
     @NonNull
     @Override
-    public MyAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent,
-                                                     int viewType) {
-        // create a new view
-        //TextView v = (TextView)
+    public MyAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.my_text_view, parent, false);
-        //...
         return new MyViewHolder(v);
     }
 

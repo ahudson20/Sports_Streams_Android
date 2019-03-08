@@ -25,7 +25,6 @@ public class Links {
             Document doc = Jsoup.connect(this.url).get();
 
             /* Need better way of getting links to dive, otherwise will have to manually update reddit CSS selectors */
-            //Elements h2Only = doc.select("h2.s56cc5r-0");
             Elements h2Only = doc.select("h2.s1okktje-0");
 
             for(Element m : h2Only){

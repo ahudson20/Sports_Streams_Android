@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Streamz</string>
+    <string name="app_name">SLS</string>
     <string name="soccer">Football</string>
     <string name="nba">NBA</string>
     <string name="nfl">NFL</string>
@@ -10,16 +10,4 @@
     <string name="ncaabb">NCAA BB</string>
     <string name="mlb">MLB</string>
     <string name="sports_streams">Sports</string>
-
-    <!--<string-array name="planets_array">-->
-        <!--<item>Mercury</item>-->
-        <!--<item>Venus</item>-->
-        <!--<item>Earth</item>-->
-        <!--<item>Mars</item>-->
-        <!--<item>Jupiter</item>-->
-        <!--<item>Saturn</item>-->
-        <!--<item>Uranus</item>-->
-        <!--<item>Neptune</item>-->
-    <!--</string-array>-->
-
 </resources>

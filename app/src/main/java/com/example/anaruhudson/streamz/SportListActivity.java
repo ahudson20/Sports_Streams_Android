@@ -1,9 +1,7 @@
 package com.example.anaruhudson.streamz;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,7 +9,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -92,21 +89,18 @@ public class SportListActivity extends AppCompatActivity {
         }else{
             switch (intValue) {
                 case R.id.soccer_button: {
-                    // Do work related to button 1
                     TextView title = findViewById(R.id.link_title);
                     title.setText(R.string.soccer);
                     new BackgroundTask().execute(intValue);
                     break;
                 }
                 case R.id.nba_button: {
-                    // Do work related to button 2
                     TextView title = findViewById(R.id.link_title);
                     title.setText(R.string.nba);
                     new BackgroundTask().execute(intValue);
                     break;
                 }
                 case R.id.nfl_button: {
-                    // Do work related to button 3
                     TextView title = findViewById(R.id.link_title);
                     title.setText(R.string.nfl);
                     new BackgroundTask().execute(intValue);
@@ -119,28 +113,24 @@ public class SportListActivity extends AppCompatActivity {
                     break;
                 }
                 case R.id.rugby_button: {
-                    // Do work related to button 5
                     TextView title = findViewById(R.id.link_title);
                     title.setText(R.string.rugby);
                     new BackgroundTask().execute(intValue);
                     break;
                 }
                 case R.id.mma_button: {
-                    // Do work related to button 5
                     TextView title = findViewById(R.id.link_title);
                     title.setText(R.string.mma);
                     new BackgroundTask().execute(intValue);
                     break;
                 }
                 case R.id.nhl_button: {
-                    // Do work related to button 5
                     TextView title = findViewById(R.id.link_title);
                     title.setText(R.string.nhl);
                     new BackgroundTask().execute(intValue);
                     break;
                 }
                 case R.id.ncaabb_button: {
-                    // Do work related to button 5
                     TextView title = findViewById(R.id.link_title);
                     title.setText(R.string.ncaabb);
                     new BackgroundTask().execute(intValue);
