@@ -65,7 +65,7 @@ public class Links {
         try {
             Document doc = Jsoup.connect(link).get();
 
-            Elements streamsOnly = doc.select("a[href].s90z9tc-27");
+            Elements streamsOnly = doc.select("a[href].s14dydj4-27");
 
             for(Element h : streamsOnly){
                 String httpHref = h.attr("abs:href");
