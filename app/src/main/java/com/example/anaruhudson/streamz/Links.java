@@ -20,7 +20,8 @@ public class Links {
      * and calls setLinksToDive.
      * @param url a String of the URL to be accessed and have links scraped from.
      */
-    public Links(String url){
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    Links(String url){
         this.url = url;
         setLinksToDive();
     }
@@ -29,6 +30,7 @@ public class Links {
      * Tries to connect to the link set in data-field,
      * Then finds the posts on Reddit for each Game Thread, and calls diveLink on each Game Thread link.
      */
+    @RequiresApi(api = Build.VERSION_CODES.N)
     private void setLinksToDive(){
         try {
             Document doc = Jsoup.connect(this.url).get();
@@ -69,7 +71,19 @@ public class Links {
 
             allLinks.stream().filter((t) -> (t.parent().parent().parent().parent().parent().className().contains("Comment")));
 
-            allLinks.stream().map((h) -> h.attr("abs:href")).filter((httpHref) -> (!(httpHref.contains("https://www.reddit.com") || httpHref.contains("https://discord") || httpHref.contains("https://time.is") || httpHref.matches("(((https)||(http))://image.prntscr.com(.*))") || httpHref.matches("((https)||(http)://i.imgur.com(.*))") || httpHref.matches("(http://www.timebie.com)(.*)") || httpHref.matches("((https://)||(http://))(.*)reddit(.*)(.com)(.*)")))).forEachOrdered(eachLink::add);
+            //allLinks.stream().filter((Element t) -> t.parent().parent().parent().parent().parent().className().contains("Comment"));
+            for(Element e : allLinks){
+                String httpHref = e.attr("abs:href");
+                if(!(   httpHref.contains("https://www.reddit.com") ||
+                        httpHref.contains("https://discord") ||
+                        httpHref.contains("https://time.is") ||
+                        httpHref.matches("(((https)||(http))://image.prntscr.com(.*))") ||
+                        httpHref.matches("((https)||(http)://i.imgur.com(.*))") ||
+                        httpHref.matches("(http://www.timebie.com)(.*)") ||
+                        httpHref.matches("((https://)||(http://))(.*)reddit(.*)(.com)(.*)"))){
+                    eachLink.add(httpHref);
+                }
+            }
         }catch(IOException e){
             System.out.println(e.getMessage());
         }
