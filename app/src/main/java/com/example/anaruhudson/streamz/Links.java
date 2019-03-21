@@ -1,16 +1,16 @@
 package com.example.anaruhudson.streamz;
 
-import android.os.Build;
-import android.support.annotation.RequiresApi;
-
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
 import java.io.*;
 import java.util.*;
 
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 
+/**
+ * @author anaruhudson
+ */
 public class Links {
     private String url;
     private Map<String, Collection<String>> finalLinks = new HashMap<>();
@@ -20,7 +20,6 @@ public class Links {
      * and calls setLinksToDive.
      * @param url a String of the URL to be accessed and have links scraped from.
      */
-    //@RequiresApi(api = Build.VERSION_CODES.N)
     Links(String url){
         this.url = url;
         setLinksToDive();
@@ -30,7 +29,6 @@ public class Links {
      * Tries to connect to the link set in data-field,
      * Then finds the posts on Reddit for each Game Thread, and calls diveLink on each Game Thread link.
      */
-    //@RequiresApi(api = Build.VERSION_CODES.N)
     private void setLinksToDive(){
         try {
             Document doc = Jsoup.connect(this.url).get();
@@ -60,7 +58,6 @@ public class Links {
      * @param link the URL that should be connected to and scraped for streams.
      * @return eachLink a Collection of strings storing each live-stream link for the associated Game Thread.
      */
-    //@RequiresApi(api = Build.VERSION_CODES.N)
     private Collection<String> diveLink(String link){
         Collection<String> eachLink = new LinkedHashSet<>();
         try {
@@ -71,15 +68,12 @@ public class Links {
 
             Elements a = new Elements();
 
-            //allLinks.stream().filter((t) -> (t.parent().parent().parent().parent().parent().className().contains("Comment")));
-
             for(Element e : allLinks){
                 if(e.parent().parent().parent().parent().parent().className().contains("Comment")){
                     a.add(e);
                 }
             }
 
-            //allLinks.stream().filter((Element t) -> t.parent().parent().parent().parent().parent().className().contains("Comment"));
             for(Element e : a){
                 String httpHref = e.attr("abs:href");
                 if(!(   httpHref.contains("https://www.reddit.com") ||

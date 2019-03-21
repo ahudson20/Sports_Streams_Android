@@ -21,17 +21,6 @@ public class SportListActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager mLayoutManager;
-
-    private Links soccer = null;
-    private Links nba = null;
-    private Links nfl = null;
-    private Links mma = null;
-    private Links nhl = null;
-    //private Links cricket = null;
-    private Links ncaabb = null;
-    private Links rugby = null;
-    private Links mlb = null;
 
     private Map<String, Collection<String>> soccerLinks;
     private Map<String, Collection<String>> nbaLinks;
@@ -60,7 +49,7 @@ public class SportListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sport_list);
 
-        this.BAR = (ProgressBar)findViewById(R.id.progressBar);
+        this.BAR = findViewById(R.id.progressBar);
 
         //SPINNER
         //Spinner spinner = findViewById(R.id.combo_spinner);
@@ -75,7 +64,7 @@ public class SportListActivity extends AppCompatActivity {
         mRecyclerView.setHasFixedSize(true);
 
         // use a linear layout manager
-        mLayoutManager = new LinearLayoutManager(this);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mAdapter = new MyAdapter(emptyStore);
         mRecyclerView.setAdapter(mAdapter);
@@ -273,62 +262,61 @@ public class SportListActivity extends AppCompatActivity {
     }
 
     private class BackgroundTask extends AsyncTask<Integer, Void, Void> {
-
         @Override
         protected Void doInBackground(Integer... integer) {
 
             switch (integer[0]) {
                 case R.id.soccer_button: {
-                    soccer = new Links(Constants.soccerURL);
+                    Links soccer = new Links(Constants.soccerURL);
                     soccerLinks = soccer.getFinalLinks();
                     l = new ArrayList<>(soccerLinks.keySet());
                     checkEmpty(l);
                     break;
                 }
                 case R.id.nba_button: {
-                    nba = new Links(Constants.nbaURL);
+                    Links nba = new Links(Constants.nbaURL);
                     nbaLinks = nba.getFinalLinks();
                     l = new ArrayList<>(nbaLinks.keySet());
                     checkEmpty(l);
                     break;
                 }
                 case R.id.nfl_button: {
-                    nfl = new Links(Constants.nflURL);
+                    Links nfl = new Links(Constants.nflURL);
                     nflLinks = nfl.getFinalLinks();
                     l = new ArrayList<>(nflLinks.keySet());
                     checkEmpty(l);
                     break;
                 }
                 case R.id.mlb_button : {
-                    mlb = new Links(Constants.mlbURL);
+                    Links mlb = new Links(Constants.mlbURL);
                     mlbLinks = mlb.getFinalLinks();
                     l = new ArrayList<>(mlbLinks.keySet());
                     checkEmpty(l);
                     break;
                 }
                 case R.id.rugby_button: {
-                    rugby = new Links(Constants.rugbyURL);
+                    Links rugby = new Links(Constants.rugbyURL);
                     rugbyLinks = rugby.getFinalLinks();
                     l = new ArrayList<>(rugbyLinks.keySet());
                     checkEmpty(l);
                     break;
                 }
                 case R.id.mma_button: {
-                    mma = new Links(Constants.mmaURL);
+                    Links mma = new Links(Constants.mmaURL);
                     mmaLinks = mma.getFinalLinks();
                     l = new ArrayList<>(mmaLinks.keySet());
                     checkEmpty(l);
                     break;
                 }
                 case R.id.nhl_button: {
-                    nhl = new Links(Constants.nhlURL);
+                    Links nhl = new Links(Constants.nhlURL);
                     nhlLinks = nhl.getFinalLinks();
                     l = new ArrayList<>(nhlLinks.keySet());
                     checkEmpty(l);
                     break;
                 }
                 case R.id.ncaabb_button: {
-                    ncaabb = new Links(Constants.ncaabbURL);
+                    Links ncaabb = new Links(Constants.ncaabbURL);
                     ncaabbLinks = ncaabb.getFinalLinks();
                     l = new ArrayList<>(ncaabbLinks.keySet());
                     checkEmpty(l);
