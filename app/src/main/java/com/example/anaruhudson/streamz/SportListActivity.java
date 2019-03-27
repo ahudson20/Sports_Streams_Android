@@ -27,7 +27,6 @@ public class SportListActivity extends AppCompatActivity {
     private Map<String, Collection<String>> nflLinks;
     private Map<String, Collection<String>> mmaLinks;
     private Map<String, Collection<String>> nhlLinks;
-    //private Map<String, Collection<String>> cricketLinks;
     private Map<String, Collection<String>> ncaabbLinks;
     private Map<String, Collection<String>> rugbyLinks;
     private Map<String, Collection<String>> mlbLinks;
@@ -51,12 +50,8 @@ public class SportListActivity extends AppCompatActivity {
 
         this.BAR = findViewById(R.id.progressBar);
 
-        //SPINNER
-        //Spinner spinner = findViewById(R.id.combo_spinner);
         this.spinner = findViewById(R.id.combo_spinner);
 
-
-        //RECYCLERVIEW
         mRecyclerView = findViewById(R.id.list_container);
 
         // use this setting to improve performance if you know that changes
@@ -133,7 +128,7 @@ public class SportListActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 int a = SportListActivity.this.intValue;
                 if (a == 0) {
-                    // error handling (Will come in this if when button id is invalid)
+                    // error handling (Will come in this if when button id is invalid), returns to mainscreen if something wrong happens.
                     startActivity(new Intent(SportListActivity.this, MainActivity.class));
                 } else {
                     switch (a) {
