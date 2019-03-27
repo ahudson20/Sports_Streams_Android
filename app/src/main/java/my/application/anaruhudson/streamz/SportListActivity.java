@@ -1,4 +1,4 @@
-package com.example.anaruhudson.streamz;
+package my.application.anaruhudson.streamz;
 
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -12,7 +12,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;

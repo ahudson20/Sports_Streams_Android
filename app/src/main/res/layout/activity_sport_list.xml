@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SportListActivity"
+    tools:context="my.application.anaruhudson.streamz.SportListActivity"
     android:orientation="vertical"
     android:gravity="top|center"
     android:id="@+id/link_linear_layout"

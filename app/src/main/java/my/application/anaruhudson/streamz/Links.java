@@ -1,4 +1,4 @@
-package com.example.anaruhudson.streamz;
+package my.application.anaruhudson.streamz;
 
 import java.io.*;
 import java.util.*;
@@ -33,15 +33,27 @@ public class Links {
         try {
             Document doc = Jsoup.connect(this.url).get();
 
-            // Need better way of getting links to dive, otherwise will have to manually update reddit CSS selectors
             // Elements h2Only = doc.select("h2.s56cc5r-0");
             // Most recent css selector: .s1okktje-0
             Elements h2Only = doc.select("h2");
 
             for(Element e : h2Only){
                 String text = e.text();
-                if (text.matches("(.*)(\\s)(?i)v(\\s)(.*)") || text.matches("(.*)(\\s)(?i)vs(\\s)(.*)") || text.matches("(.*)(\\s)(?i)vs.(\\s)(.*)") || text.matches("(.*)(\\s)(?i)v.(\\s)(.*)") || text.matches("(.*)(\\s)(?i)at(\\s)(.*)") || text.matches("(.*)(\\s)(?i)@(\\s)(.*)")) {
-                    text = text.replaceAll("(?i)game thread:", "").replaceAll("(?i)archive thread:", "").replaceAll("(?i)event thread thread:", "").replaceAll("(\\[)([A-Za-z0-9:\\s])*(\\])", "").replaceAll("(\\()([A-Za-z0-9:\\s])*(\\))", "").trim();
+                if      (
+                        text.matches("(.*)(\\s)(?i)v(\\s)(.*)")   ||
+                        text.matches("(.*)(\\s)(?i)vs(\\s)(.*)")  ||
+                        text.matches("(.*)(\\s)(?i)vs.(\\s)(.*)") ||
+                        text.matches("(.*)(\\s)(?i)v.(\\s)(.*)")  ||
+                        text.matches("(.*)(\\s)(?i)at(\\s)(.*)")  ||
+                        text.matches("(.*)(\\s)(?i)@(\\s)(.*)")
+                        )
+                {
+                    text = text.replaceAll("(?i)game thread:", "")
+                               .replaceAll("(?i)archive thread:", "")
+                               .replaceAll("(?i)event thread thread:", "")
+                               .replaceAll("(\\[)([A-Za-z0-9:\\s])*(\\])", "")
+                               .replaceAll("(\\()([A-Za-z0-9:\\s])*(\\))", "").trim();
+
                     finalLinks.put(text, diveLink(e.parent().attr("abs:href")));
                 }
             }

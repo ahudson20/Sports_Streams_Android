@@ -1,4 +1,4 @@
-package com.example.anaruhudson.streamz;
+package my.application.anaruhudson.streamz;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
