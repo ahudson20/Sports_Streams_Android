@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SLS</string>
+    <string name="app_name">Awa</string>
     <string name="soccer">Football</string>
     <string name="nba">NBA</string>
     <string name="nfl">NFL</string>
@@ -10,4 +10,23 @@
     <string name="ncaabb">NCAA BB</string>
     <string name="mlb">MLB</string>
     <string name="sports_streams">Sports</string>
+    <string name="title_activity_ad">AdActivity</string>
+
+    <string name="action_settings">Settings</string>
+
+    <!-- -
+        This is an ad unit ID for an interstitial test ad. Replace with your own interstitial ad unit id.
+        For more information, see https://support.google.com/admob/answer/3052638
+    <!- -->
+    <string name="interstitial_ad_unit_id">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="title_activity_hamburger__menu">Awa</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Awa Live Streams</string>
+    <string name="nav_header_subtitle">AwaOra@gmail.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="share">Share</string>
+    <string name="review">Review</string>
+    <!-- ca-app-pub-3940256099942544/1033173712 --><!-- This is the test value-->
+    <!-- ca-app-pub-6482864301383726/1947574869 --><!-- This is the real value-->
 </resources>

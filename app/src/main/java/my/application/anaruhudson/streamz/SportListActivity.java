@@ -1,11 +1,18 @@
 package my.application.anaruhudson.streamz;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -16,7 +23,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
 
-public class SportListActivity extends AppCompatActivity {
+public class SportListActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
@@ -40,12 +47,26 @@ public class SportListActivity extends AppCompatActivity {
 
     private ProgressBar BAR;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sport_list);
+        //setContentView(R.layout.activity_sport_list);
+        setContentView(R.layout.activity_hamburger__menu_list);
+
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
+
 
         this.BAR = findViewById(R.id.progressBar);
 
@@ -224,6 +245,46 @@ public class SportListActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+
+        if (id == R.id.nav_share) {
+            String pageUrl = "https://play.google.com/store/apps/details?id=my.application.anaruhudson.streamz";
+            final Intent intent = new Intent(Intent.ACTION_SEND);
+            intent.setType("text/plain");
+            intent.putExtra(Intent.EXTRA_TEXT, pageUrl);
+
+            try {
+                startActivity(Intent.createChooser(intent, "Select an action"));
+            } catch (android.content.ActivityNotFoundException ex) {
+                // (handle error)
+            }
+        } else if (id == R.id.nav_review) {
+            try {
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=my.application.anaruhudson.streamz")));
+            } catch (android.content.ActivityNotFoundException anfe) {
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=my.application.anaruhudson.streamz")));
+            }
+        }
+
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
     /**
      * Takes an ArrayList, checks if it is empty, and if it is,
      * adds a String to it, so that the UI shows that there are no games available,
@@ -254,6 +315,7 @@ public class SportListActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
     }
+
 
     private class BackgroundTask extends AsyncTask<Integer, Void, Void> {
         @Override
