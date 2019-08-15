@@ -35,7 +35,7 @@ public class Links {
 
             // Elements h2Only = doc.select("h2.s56cc5r-0");
             // Most recent css selector: .s1okktje-0
-            Elements h2Only = doc.select("h2");
+            Elements h2Only = doc.select("h3");
 
             for(Element e : h2Only){
                 String text = e.text();
@@ -53,8 +53,9 @@ public class Links {
                                .replaceAll("(?i)event thread thread:", "")
                                .replaceAll("(\\[)([A-Za-z0-9:\\s])*(\\])", "")
                                .replaceAll("(\\()([A-Za-z0-9:\\s])*(\\))", "").trim();
-
-                    finalLinks.put(text, diveLink(e.parent().attr("abs:href")));
+                    System.out.println("h3: " + text);
+                    System.out.println("parent: " + e.parent().parent().attr("abs:href"));
+                    finalLinks.put(text, diveLink(e.parent().parent().attr("abs:href")));
                 }
             }
 
@@ -96,6 +97,7 @@ public class Links {
                         httpHref.matches("(http://www.timebie.com)(.*)") ||
                         httpHref.matches("((https://)||(http://))(.*)reddit(.*)(.com)(.*)"))){
                     eachLink.add(httpHref);
+                    System.out.println(httpHref);
                 }
             }
         }catch(IOException e){
