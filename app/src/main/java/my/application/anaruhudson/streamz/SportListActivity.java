@@ -12,6 +12,9 @@ import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.Toolbar;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
+import android.os.StrictMode;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -24,6 +27,8 @@ import java.util.Collection;
 import java.util.Map;
 
 public class SportListActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+
+    private SwipeRefreshLayout swipeContainer;
 
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
@@ -54,6 +59,7 @@ public class SportListActivity extends AppCompatActivity implements NavigationVi
         setContentView(R.layout.activity_hamburger__menu_list);
 
 
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -68,7 +74,7 @@ public class SportListActivity extends AppCompatActivity implements NavigationVi
 
 
 
-        this.BAR = findViewById(R.id.progressBar);
+        this.BAR = findViewById(R.id.progressBar2);
 
         this.spinner = findViewById(R.id.combo_spinner);
 
@@ -243,6 +249,64 @@ public class SportListActivity extends AppCompatActivity implements NavigationVi
                 //Another interface callback, no idea what to put here???
             }
         });
+
+        swipeContainer = findViewById(R.id.swipeContainer);
+        // Setup refresh listener which triggers new data loading
+        swipeContainer.setOnRefreshListener(() -> {
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+            // Your code to refresh the list here.
+            // Make sure you call swipeContainer.setRefreshing(false)
+            // once the network request has completed successfully.
+            Intent swipeIntent = getIntent();
+            int swipeIntValue = swipeIntent.getIntExtra("intVariableName", 0);
+            if(swipeIntValue == 0) {
+                // error handling (Will come in this if when button id is invalid)
+                startActivity(new Intent(SportListActivity.this, MainActivity.class));
+            }else{
+                switch (swipeIntValue) {
+                    case R.id.soccer_button: {
+                        new BackgroundTask().execute(swipeIntValue);
+                        break;
+                    }
+                    case R.id.nba_button: {
+                        new BackgroundTask().execute(swipeIntValue);
+                        break;
+                    }
+                    case R.id.nfl_button: {
+                        new BackgroundTask().execute(swipeIntValue);
+                        break;
+                    }
+                    case R.id.mlb_button : {
+                        new BackgroundTask().execute(swipeIntValue);
+                        break;
+                    }
+                    case R.id.rugby_button: {
+                        new BackgroundTask().execute(swipeIntValue);
+                        break;
+                    }
+                    case R.id.mma_button: {
+                        new BackgroundTask().execute(swipeIntValue);
+                        break;
+                    }
+                    case R.id.nhl_button: {
+                        new BackgroundTask().execute(swipeIntValue);
+                        break;
+                    }
+                    case R.id.ncaabb_button: {
+                        new BackgroundTask().execute(swipeIntValue);
+                        break;
+                    }
+                }
+            }
+            swipeContainer.setRefreshing(false);
+        });
+        // Configure the refreshing colors
+        swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light);
+
     }
 
     @Override

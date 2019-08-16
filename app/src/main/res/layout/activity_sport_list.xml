@@ -21,9 +21,9 @@
         android:padding="5sp"
         android:text="Rugby"
         android:textSize="28sp" />
-        <!--android:layout_gravity="left"-->
-        <!--android:paddingLeft="10sp"-->
-        <!--android:paddingRight="10sp"/>-->
+    <!--android:layout_gravity="left"-->
+    <!--android:paddingLeft="10sp"-->
+    <!--android:paddingRight="10sp"/>-->
 
 
     <Spinner
