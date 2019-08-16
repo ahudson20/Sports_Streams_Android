@@ -1,7 +1,7 @@
 # Stream_App_Android
 
 ## TODO:
-* Pull down to refresh links
+* ~~Pull down to refresh links~~
 * Settings - add/remove/re-arrange items
 * Add more items
 * ~~Loading symbol~~
@@ -10,6 +10,7 @@
 * ~~Don't reload app on screen rotation~~
 * Soft? save state vs. reload every time buttons are pressed
 * ~~Update app icon~~
+* ~~Remove items that don't work~~
 
 
 ## Sports:
