@@ -70,4 +70,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     public int getItemCount() {
         return mDataset.size();
     }
+
+    public void clear() {
+        mDataset.clear();
+        notifyDataSetChanged();
+    }
+
+    // Add a list of items -- change to type used
+    public void addAll(List<String> list) {
+        mDataset.addAll(list);
+        notifyDataSetChanged();
+    }
 }

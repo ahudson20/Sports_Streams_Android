@@ -13,13 +13,13 @@
     <TextView
         android:id="@+id/link_title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginBottom="5sp"
         android:layout_marginTop="60sp"
         android:layout_weight="0.1"
         android:gravity="center"
         android:padding="5sp"
-        android:text="Rugby"
+        android:text="@string/placeholder"
         android:textSize="28sp" />
     <!--android:layout_gravity="left"-->
     <!--android:paddingLeft="10sp"-->
@@ -33,22 +33,33 @@
         android:layout_margin="5sp"
         android:background="@drawable/spinner_border" />
 
+    <!--<ProgressBar-->
+        <!--android:id="@+id/progressBarHamburger"-->
+        <!--style="?android:attr/progressBarStyle"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:visibility="visible" />-->
+
     <ProgressBar
-        android:id="@+id/progressBar"
+        android:id="@+id/progressBar2"
         style="?android:attr/progressBarStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.5"
-        android:visibility="visible" />
+        android:visibility="visible"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/list_container"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeContainer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="5sp"
-        android:layout_weight="20"
-        android:fillViewport="true"
-        android:scrollbars="vertical"/>
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/list_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="5sp"
+            android:layout_weight="20"
+            android:fillViewport="true"
+            android:scrollbars="vertical" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 
 </LinearLayout>

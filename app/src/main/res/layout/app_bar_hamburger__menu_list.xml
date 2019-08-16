@@ -22,6 +22,7 @@
 
     <include
         layout="@layout/content_hamburger__menu_list"
-        android:layout_height="584dp" />
+        android:layout_height="584dp"
+        android:layout_width="match_parent" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

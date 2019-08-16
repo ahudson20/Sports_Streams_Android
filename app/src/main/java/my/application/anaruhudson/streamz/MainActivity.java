@@ -1,5 +1,6 @@
 package my.application.anaruhudson.streamz;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +13,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -123,8 +125,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //                showingAd();
                 break;
             case R.id.nba_button:
-                intent.putExtra("intVariableName", id);
-                startActivity(intent);
+//                intent.putExtra("intVariableName", id);
+//                startActivity(intent);
+                CharSequence textNBA = "NBA currently unavailable!";
+
+
+                Toast toastNBA = Toast.makeText(getApplicationContext(), textNBA, Toast.LENGTH_SHORT);
+                toastNBA.show();
 //                showingAd();
                 break;
             case R.id.nfl_button:
@@ -143,8 +150,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //                showingAd();
                 break;
             case R.id.mma_button:
-                intent.putExtra("intVariableName", id);
-                startActivity(intent);
+//                intent.putExtra("intVariableName", id);
+//                startActivity(intent);
+
+                CharSequence textMMA = "MMA currently unavailable!";
+
+
+                Toast toastMMA = Toast.makeText(getApplicationContext(), textMMA, Toast.LENGTH_SHORT);
+                toastMMA.show();
 //                showingAd();
                 break;
             case R.id.nhl_button:
